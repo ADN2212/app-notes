@@ -6,6 +6,8 @@ interface IOptions {
     body?: string;
 }
 
+const port: number = 5555
+
 async function fetchAPI<T>(
     endpointStr: string, 
     method: IMethod = 'GET', 
@@ -25,7 +27,7 @@ async function fetchAPI<T>(
         options.body = JSON.stringify(data);
     }
 
-    const response = await fetch(`http://localhost:3001/${endpointStr}`, options);
+    const response = await fetch(`http://localhost:${port}/${endpointStr}`, options);
     const result: T = await response.json();
     return result;
 }
